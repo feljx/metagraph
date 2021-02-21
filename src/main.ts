@@ -1,14 +1,11 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, Menu } from 'electron'
+import { defaultConfig } from './config'
 
 type a = number | string
 
 function createWindow () {
     const win = new BrowserWindow({
-        width: 800,
-        height: 600,
-        webPreferences: {
-            nodeIntegration: true
-        }
+        ...defaultConfig
     })
 
     win.loadFile('index.html')

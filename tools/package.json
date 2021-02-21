@@ -1,0 +1,13 @@
+{
+    "name": "metagraph",
+    "productName": "metagraph",
+    "version": "0.1.0",
+    "description": "...",
+    "main": "electron.js",
+    "keywords": [],
+    "author": {
+        "name": "felix",
+        "email": "11788526+flxsu@users.noreply.github.com"
+    },
+    "license": "UNLICENSED"
+}
