@@ -1,13 +1,14 @@
 import React, { Component, createRef, RefObject, useEffect, useRef } from 'react'
 import * as PIXI from 'pixi.js'
-import { IConfig } from '../../config'
+import { ConfigState } from '../../state/Config'
 
 interface Props {
-    config: IConfig
+    config: ConfigState
 }
 
 interface State {}
 
 export function MetaCanvas (props: Props) {
     const ref = useRef(null)
+    return <div />
 }

@@ -1,6 +1,6 @@
 const { stat, mkdir, copyFile } = require('fs')
 const webpack = require('webpack')
-const config = require('./config')
+const { config } = require('./config')
 const webpack_config = require('./webpack.config.js')
 
 // Execution begins here
@@ -13,10 +13,13 @@ async function main () {
         if (webpackErrors.length > 0) {
             throw webpackErrors[0]
         }
-        await createOutputFolder()
-        await copyStaticFile(config.sourceIndexHtml, config.outIndexHtml)
-        await copyStaticFile(config.sourcePackageJson, config.outPackageJson)
-        await copyStaticFile(config.sourceCss, config.outCss)
+        await ensureOutputFolderExists()
+        // iterate through static asset config
+        // copy using source and output paths defined by each config
+        for (const assetConfig of Object.values(config.static)) {
+            const { source, output } = assetConfig
+            await copyStaticFile(source, output)
+        }
     } catch (error) {
         console.log(error)
     }
@@ -33,11 +36,11 @@ function runWebpack () {
     })
 }
 
-function createOutputFolder (path) {
+function ensureOutputFolderExists (path) {
     return new Promise((resolve, reject) => {
-        stat(config.outFolder, (err, stats) => {
+        stat(config.folder.output, (err, stats) => {
             if (err) {
-                mkdir(config.outFolder, (err) => {
+                mkdir(config.folder.output, (err) => {
                     if (err) {
                         reject(new Error(`ERROR creating output folder: ${err}`))
                     }

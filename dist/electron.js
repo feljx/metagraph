@@ -1,1 +1,0 @@
-(()=>{"use strict";const e=require("electron"),n={width:1200,height:800,webPreferences:{nodeIntegration:!0}};function t(){new e.BrowserWindow(Object.assign({},n)).loadFile("index.html")}e.app.whenReady().then(t),e.app.on("window-all-closed",(()=>{"darwin"!==process.platform&&e.app.quit()})),e.app.on("activate",(()=>{0===e.BrowserWindow.getAllWindows().length&&t()}))})();

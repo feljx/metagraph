@@ -1,11 +1,10 @@
 const path = require('path')
-
-const config = require('./config')
-const entry_path = `${config.sourceFolder}/${config.sourceFile}`
+const { config } = require('./config')
+const entryPath = `${config.folder.source}/${config.file.source}`
 
 module.exports = {
     entry: {
-        electron: entry_path,
+        electron: entryPath,
         react: './src/react/app.tsx'
     },
     target: 'electron-main',
@@ -23,6 +22,6 @@ module.exports = {
     },
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, config.outFolder)
+        path: path.resolve(__dirname, config.folder.output)
     }
 }
