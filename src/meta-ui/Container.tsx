@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import { render } from 'react-dom'
 import { MetaIcon, MetaPanel } from './MetaPanel'
 import { MetaCanvas } from './MetaProjection'
-import { defaultConfig, ConfigState } from '../state/Config'
 
 // Render app
 const domContainer = document.getElementById('reactContainer')
