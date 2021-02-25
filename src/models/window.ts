@@ -12,7 +12,7 @@ const defaultWindowOptions: BrowserWindowConstructorOptions = {
     }
 }
 
-export class Window {
+export class WindowModel {
     constructor (
         private electronOptions: BrowserWindowConstructorOptions = defaultWindowOptions
     ) {}

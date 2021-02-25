@@ -1,3 +1,5 @@
-import { App } from './App'
+import { AppController } from './controllers'
+import { AppModel } from './models'
 
-new App()
+const am = new AppModel()
+const ac = new AppController(ac)
