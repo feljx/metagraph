@@ -1,5 +1,4 @@
-import { app, BrowserWindow, Menu } from 'electron'
-import { BrowserWindowConstructorOptions } from 'electron'
+import { app, BrowserWindow, Menu, BrowserWindowConstructorOptions } from 'electron'
 
 export class App {
     private windows: BrowserWindow[] = []
