@@ -1,30 +1,24 @@
-import { app, BrowserWindow, Menu } from 'electron'
+export interface ConfigState {
+    width: number
+    height: number
+    webPreferences: any
+}
 
-export class App {
-    private
-    private windows: BrowserWindow[] = []
-    createWindow () {
-        this.windows.push(new BrowserWindow())
+const defaultConfig: ConfigState = {
+    width: 1200,
+    height: 800,
+    webPreferences: {
+        nodeIntegration: true
     }
 }
 
-function createWindow () {
-    const win = new BrowserWindow()
-
-    win.loadFile('index.html')
-    // win.webContents.send()
+export class Config {
+    private state: ConfigState = defaultConfig
+    public getElectronWindowOptions () {
+        return {
+            width: this.state.width,
+            height: this.state.height,
+            webPreferences: this.state.webPreferences
+        }
+    }
 }
-
-app.whenReady().then(createWindow)
-
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-        app.quit()
-    }
-})
-
-app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-        createWindow()
-    }
-})

@@ -1,6 +1,6 @@
 import React, { Component, createRef, RefObject, useEffect, useRef } from 'react'
 import * as PIXI from 'pixi.js'
-import { ConfigState } from '../../state/App'
+import { ConfigState } from '../../model/App'
 
 interface Props {
     config: ConfigState
