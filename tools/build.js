@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const { config } = require('./config')
 const webpack_config = require('./webpack.config.js')
 
-// Execution begins here
+// Execution here
 main()
 
 async function main () {
@@ -27,7 +27,8 @@ async function main () {
 
 function runWebpack () {
     return new Promise((resolve, reject) => {
-        webpack(webpack_config, (err, stats) => {
+        const compiler = webpack(webpack_config)
+        compiler.run((err, stats) => {
             if (err) {
                 reject(new Error(`ERROR in webpack build: ${err}`))
             }

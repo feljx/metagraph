@@ -1,0 +1,19 @@
+import { render } from 'react-dom'
+import { createElement } from 'react'
+import { Controller } from '../abstract/controller'
+import { WindowView } from './view'
+import { WindowModel } from './model'
+import { BrowserWindow } from 'electron'
+
+export class WindowController extends Controller {
+    private electronWindow: BrowserWindow
+
+    constructor (private model: WindowModel) {
+        super()
+    }
+
+    render () {
+        const domContainer = document.getElementById('reactContainer')
+        render(createElement(WindowView), domContainer)
+    }
+}
