@@ -3,7 +3,7 @@
     "productName": "metagraph",
     "version": "0.1.0",
     "description": "...",
-    "main": "application.js",
+    "main": "reload.js",
     "keywords": [],
     "author": {
         "name": "felix",

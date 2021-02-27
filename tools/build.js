@@ -1,4 +1,5 @@
 const { stat, mkdir, copyFile } = require('fs')
+const { MultiStats } = require('webpack')
 const webpack = require('webpack')
 const { config } = require('./config')
 const webpack_config = require('./webpack.config.js')
@@ -8,11 +9,6 @@ main()
 
 async function main () {
     try {
-        const stats = await runWebpack()
-        const webpackErrors = stats.compilation.errors
-        if (webpackErrors.length > 0) {
-            throw webpackErrors[0]
-        }
         await ensureOutputFolderExists()
         // iterate through static asset config
         // copy using source and output paths defined by each config
@@ -20,11 +16,51 @@ async function main () {
             const { source, output } = assetConfig
             await copyStaticFile(source, output)
         }
+
+        // WATCH ONLY
+        const compiler = webpack(webpack_config)
+        let compilationNum = 0
+        compiler.watch({}, (err, multistats) => {
+            if (err) throw err
+            const ordinals = [ 'st', 'nd', 'rd', 'th' ]
+            const ordinal = ordinals[compilationNum++ % 10] || ordinals[3]
+            console.log(`${compilationNum}${ordinal} compilation`)
+            // @ts-ignore
+            const isMultistats = multistats.stats && multistats.stats instanceof Array
+            if (isMultistats) {
+                // @ts-ignore
+                for (const compilationStats of multistats.stats) {
+                    const webpackErrors = compilationStats.compilation.errors
+                    if (webpackErrors.length > 0) {
+                        throw webpackErrors[0]
+                    }
+                }
+            }
+        })
+
+        // BUILD ONLY
+        // const stats = await runWebpack()
+        // const webpackErrors = stats.compilation.errors
+        // if (webpackErrors.length > 0) {
+        //     throw webpackErrors[0]
+        // }
     } catch (error) {
-        console.log(error)
+        console.log(`Couldn't run Webpack: ${error}`)
     }
 }
 
+// WATCH
+function* watchWebpack () {
+    yield new Promise((resolve, reject) => {
+        const compiler = webpack(webpack_config)
+        compiler.watch({}, (err, stats) => {
+            if (err) reject(err)
+            resolve(stats)
+        })
+    })
+}
+
+// BUILD ONLY
 function runWebpack () {
     return new Promise((resolve, reject) => {
         const compiler = webpack(webpack_config)

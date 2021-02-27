@@ -6,7 +6,7 @@ export class ApplicationModel extends Model {
         width: 1200,
         height: 800,
         webPreferences: {
-            nodeIntegration: true
+            contextIsolation: true
         }
     }
 }

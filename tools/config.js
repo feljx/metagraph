@@ -9,6 +9,7 @@ const PACKAGE_JSON = 'package.json'
 const INDEX_HTML = 'index.html'
 const STYLE_CSS = 'style.css'
 const TAILWIND_CSS = 'tailwind.css'
+const RELOAD_JS = 'reload.js'
 
 //
 // Project config
@@ -39,6 +40,10 @@ const config = {
         tailwindCss: {
             source: resolve(FOLDER_SOURCE, STATIC_ASSETS_FOLDER_NAME, TAILWIND_CSS),
             output: resolve(FOLDER_OUTPUT, TAILWIND_CSS)
+        },
+        reloadJs: {
+            source: resolve(FOLDER_SOURCE, STATIC_ASSETS_FOLDER_NAME, RELOAD_JS),
+            output: resolve(FOLDER_OUTPUT, RELOAD_JS)
         }
     }
 }

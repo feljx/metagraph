@@ -12,7 +12,6 @@
     "scripts": {
         "test": "",
         "build": "node tools/build.js",
-        "prestart": "npm run build",
         "start": "electron dist"
     },
     "dependencies": {
@@ -23,8 +22,8 @@
     "devDependencies": {
         "@types/react": "^17.0.2",
         "@types/react-dom": "^17.0.1",
-        "@types/webpack": "^4.41.26",
         "electron": "^11.3.0",
+        "electron-reloader": "^1.2.0",
         "ts-loader": "^8.0.17",
         "typescript": "^4.1.5",
         "webpack": "^5.23.0"
