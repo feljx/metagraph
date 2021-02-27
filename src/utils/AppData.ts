@@ -27,31 +27,18 @@ export class AppData {
     static appDataVersion = [ ...app.getVersion() ]
         .map((c) => ([ '.', ',', '-', '!', '/', '\\' ].includes(c) ? '_' : c))
         .join('')
-    static appDataFilePath = resolve(
-        AppData.appDataFolderPath,
-        `${AppData.appDataVersion}.json`
-    )
+    static appDataFilePath = resolve(AppData.appDataFolderPath, `${AppData.appDataVersion}.json`)
 
     static async loadAppData (): Promise<UserData> {
         return new Promise((resolve, reject) => {
             readFile(AppData.appDataFilePath, 'utf8', (err, data) => {
                 if (err) {
-                    reject(
-                        new Error(
-                            `Error reading Application Support / AppData file: ${err}`
-                        )
-                    )
-                }
-                else {
+                    reject(new Error(`Error reading Application Support / AppData file: ${err}`))
+                } else {
                     data = JSON.parse(data)
                     if (!isUserData(data)) {
-                        reject(
-                            new Error(
-                                'Corrupted UserData file in Application Support / AppData'
-                            )
-                        )
-                    }
-                    else {
+                        reject(new Error('Corrupted UserData file in Application Support / AppData'))
+                    } else {
                         resolve(data)
                     }
                 }
@@ -80,15 +67,11 @@ export class AppData {
                         }
                         resolve()
                     })
-                }
-                else {
+                } else {
                     if (stats.isDirectory()) {
                         resolve()
-                    }
-                    else {
-                        reject(
-                            new Error(`Specified output folder path isn't a directory.`)
-                        )
+                    } else {
+                        reject(new Error(`Specified output folder path isn't a directory.`))
                     }
                 }
             })
