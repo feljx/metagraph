@@ -2,31 +2,29 @@ const path = require('path')
 const { config } = require('./config')
 const entryApp = './src/Application/main.ts'
 const entryWindow = './src/Window/main.ts'
-const entryPath = `${config.folder.source}/${config.file.source}`
 
-function Config (entry, target) {
-    return {
-        entry,
-        target,
-        devtool: 'source-map',
-        module: {
-            rules: [
-                {
-                    test: /\.tsx?$/,
-                    use: 'ts-loader',
-                    exclude: /node_modules/
-                }
-            ]
-        },
-        resolve: {
-            extensions: [ '.tsx', '.ts', '.js' ]
-        },
-        output: {
-            filename: '[name].js',
-            path: path.resolve(__dirname, config.folder.output)
-        }
+const Config = (entry, target) => ({
+    entry,
+    target,
+    devtool: 'source-map',
+    mode: true ? 'development' : 'production',
+    module: {
+        rules: [
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/
+            }
+        ]
+    },
+    resolve: {
+        extensions: [ '.tsx', '.ts', '.js' ]
+    },
+    output: {
+        filename: '[name].js',
+        path: path.resolve(__dirname, config.folderOut)
     }
-}
+})
 
 module.exports = [
     Config({ application: entryApp }, 'electron-main'),

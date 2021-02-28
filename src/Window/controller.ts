@@ -13,7 +13,7 @@ export class WindowController extends Controller {
     }
 
     render () {
-        const domContainer = document.getElementById('reactContainer')
+        const domContainer = document.getElementById('react-container')
         render(createElement(WindowView), domContainer)
     }
 }

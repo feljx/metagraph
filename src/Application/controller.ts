@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, screen } from 'electron'
 import { ApplicationModel } from './model'
 import { Controller } from '../abstract/controller'
 
@@ -34,5 +34,13 @@ export class ApplicationController extends Controller {
             console.log(`Couldn't instantiate window: ${err}`)
         })
         this.windows.push(electronWindow)
+        electronWindow.on('ready-to-show', this.moveWindow)
+    }
+
+    moveWindow = () => {
+        const window = this.windows[0]
+        const display = screen.getPrimaryDisplay()
+        const displays = screen.getAllDisplays()
+        console.log(displays)
     }
 }

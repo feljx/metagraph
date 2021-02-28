@@ -1,7 +1,7 @@
 import React from 'react'
 
-export function SidePanel ({ children, ...props }) {
-    const classes = []
+export function RouteBrowser ({ children, ...props }) {
+    const classes = [ 'border-solid', 'rounded-lg' ]
     return (
         <div {...props} className={classes.join('')}>
             {children}

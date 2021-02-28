@@ -1,5 +1,5 @@
 import React from 'react'
 
-export function ContentRouter (props) {
+export function SideBar ({ ...props }) {
     return <div {...props} />
 }
