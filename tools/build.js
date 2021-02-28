@@ -26,6 +26,7 @@ async function buildProject () {
 
 // Run webpack in development mode
 function bundleDev (compiler) {
+    console.log('Bundling for development...')
     let compilationNum = 0
     compiler.watch({}, (err, multistats) => {
         if (err) throw err

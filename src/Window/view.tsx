@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { SidePanel } from './SidePanel'
 import { ProjectInfo } from './ProjectInfo'
-import { ContentRouter } from './ContentRouter'
+import { RouteBrowser } from './RouteBrowser'
 import { Content } from './Content'
 import { TitleBar } from './TitleBar'
 import { ApplicationMenu } from './ApplicationMenu'
@@ -17,7 +17,9 @@ export function WindowView (props: any) {
             </TitleBar>
             <TopBar>
                 <SidePanelMenu />
-                <RouteBrowser />
+                <RouteBrowser>
+                    <NewRouteButton />
+                </RouteBrowser>
             </TopBar>
             <SidePanel className="w-1/4 min-w-0 flex-nowrap bg-gray-dark border-gray-darkest border-r-2">
                 <ProjectInfo />
