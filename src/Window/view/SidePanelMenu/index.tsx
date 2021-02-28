@@ -1,5 +1,5 @@
 import React from 'react'
 
-export function Content (props) {
+export function SidePanelMenu ({ ...props }) {
     return <div {...props} />
 }

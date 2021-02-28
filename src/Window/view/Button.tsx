@@ -1,9 +1,9 @@
 import React from 'react'
 
-export function SidePanel ({ children, ...props }) {
+export function Button ({ children, ...props }) {
     const classes = []
     return (
-        <div {...props} className={classes.join('')}>
+        <div {...props} className={classes.join(' ')}>
             {children}
         </div>
     )

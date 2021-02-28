@@ -1,7 +1,7 @@
 import React from 'react'
 
-export function RouteBrowser ({ children, ...props }) {
-    const classes = [ 'border-solid', 'rounded-lg' ]
+export function Title ({ children, ...props }) {
+    const classes = []
     return (
         <div {...props} className={classes.join('')}>
             {children}

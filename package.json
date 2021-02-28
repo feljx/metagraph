@@ -8,7 +8,7 @@
         "name": "felix",
         "email": "11788526+flxsu@users.noreply.github.com"
     },
-    "main": "app.js",
+    "main": "application.js",
     "scripts": {
         "css": "tailwindcss-cli build -c ./tailwind.config.js -o ./src/static/tailwind.css",
         "test": "",

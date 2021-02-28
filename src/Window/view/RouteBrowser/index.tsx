@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function ApplicationMenu (props) {
+export function RouteBrowser ({ ...props }) {
     const classes = []
     return <div {...props} className={classes.join('')} />
 }

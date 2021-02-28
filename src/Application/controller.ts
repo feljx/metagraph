@@ -41,6 +41,6 @@ export class ApplicationController extends Controller {
         const window = this.windows[0]
         const display = screen.getPrimaryDisplay()
         const displays = screen.getAllDisplays()
-        console.log(displays)
+        // console.log(displays)
     }
 }

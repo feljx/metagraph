@@ -1,9 +1,9 @@
 import React from 'react'
 
 export function WindowButtons ({ children, ...props }) {
-    const classes = [ 'border-solid', 'rounded-lg' ]
+    const classes = [ 'flex', 'flex-row' ].join(' ')
     return (
-        <div {...props} className={classes.join('')}>
+        <div {...props} className={classes}>
             {children}
         </div>
     )
