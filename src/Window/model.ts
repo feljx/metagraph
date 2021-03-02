@@ -1,1 +1,3 @@
-export class WindowModel {}
+export class WindowModel {
+    constructor () {}
+}

@@ -1,56 +1,50 @@
-const red1 = '#ed2158'
-const red2 = '#e53463'
-const red3 = '#db3d67'
-
 const a = '#FF6A92'
 const b = '#553772'
 const c = '#8f3b76'
 const d = '#c7417b'
 const e = '#f5487f'
 
-const F = '#242433'
-const G = '#2b2b36'
-const H = '#3c3c4e'
-const I = '#4f4f63'
-const J = '#616170'
+const M = '#eaeef0'
 
-const U = '#fea10b'
-const V = '#f8983f'
-const W = '#e26940'
 const X = '#4d7f80'
 const Y = '#2f444b'
 const Z = '#22282a'
 
 const v = '#eb6115'
 const w = '#f79e0c'
-const x = '#118c8d'
-const y = '#2c5766'
-const z = '#163842'
 
 const colors = (() => ({
     transparent: 'transparent',
     current: 'currentColor',
     red: {
-        light: red1,
-        DEFAULT: red2,
-        dark: red3
+        light: '#ed2158',
+        DEFAULT: '#e53463',
+        dark: '#db3d67'
     },
     green: {
-        light: X,
-        DEFAULT: Y,
-        dark: Z
+        light: '#118c8d',
+        DEFAULT: '#2c5766',
+        dark: '#163842'
     },
     yellow: {
-        light: U,
-        DEFAULT: V,
-        dark: W
+        lightest: '#ffbe57',
+        light: '#fea10b',
+        DEFAULT: '#f8983f',
+        dark: '#e26940'
     },
     gray: {
-        darkest: F,
-        dark: G,
-        DEFAULT: H,
-        light: I,
-        lightest: J
+        lightest: '#868da2',
+        lighter: '#6e758c',
+        light: '#586079',
+        DEFAULT: '#4c5367',
+        dark: '#36384a',
+        darker: '#2b2b36',
+        darkest: '#242433'
+    },
+    stone: {
+        light: '#eef3f6',
+        DEFAULT: '#acb9c3',
+        dark: '#a5b2c0'
     }
 }))()
 

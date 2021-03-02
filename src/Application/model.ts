@@ -1,4 +1,4 @@
-import { Model } from '../abstract/model'
+import { Model } from '../abstract/Model'
 import { BrowserWindowConstructorOptions } from 'electron'
 
 export class ApplicationModel extends Model {

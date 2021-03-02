@@ -1,6 +1,7 @@
 import { app, BrowserWindow, screen } from 'electron'
 import { ApplicationModel } from './model'
-import { Controller } from '../abstract/controller'
+import { Controller } from '../abstract/Controller'
+declare const MAIN_WINDOW_WEBPACK_ENTRY: any
 
 export class ApplicationController extends Controller {
     private windows: BrowserWindow[] = []
@@ -11,9 +12,7 @@ export class ApplicationController extends Controller {
     }
 
     init () {
-        app.whenReady().then(this.instantiateWindow).catch((err) => {
-            console.log(`Couldn't open first window: ${err}`)
-        })
+        app.on('ready', this.instantiateWindow)
         app.on('window-all-closed', () => {
             if (process.platform !== 'darwin') {
                 app.quit()
@@ -29,12 +28,14 @@ export class ApplicationController extends Controller {
     // instance method using direct assignment of a lambda to avoid problems with 'this'
     instantiateWindow = () => {
         const electronWindow = new BrowserWindow(this.model.windowOptions)
-        // just "index.html" because the electron bundle will be at the same level as index.html
-        electronWindow.loadFile('index.html').catch((err) => {
-            console.log(`Couldn't instantiate window: ${err}`)
-        })
+
+        // Open the DevTools.
+        electronWindow.webContents.openDevTools()
+
+        // and load the index.html of the app.
+        electronWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY)
         this.windows.push(electronWindow)
-        electronWindow.on('ready-to-show', this.moveWindow)
+        // electronWindow.on('ready-to-show', this.moveWindow)
     }
 
     moveWindow = () => {
