@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { Menu } from '../Menu'
 import { WindowButtons } from '../WindowButtons'
 import { Button } from '../../templates/ButtonToggle'
-import { mixClassNames } from '../../utils/styledClassName'
+import { mixClassNames } from '../../utils/mixClassNames'
 import { StyledProps } from '../../types/StyledProps'
 
 export const TitleBar: FunctionComponent<StyledProps> = ({ className, ...props }) => {

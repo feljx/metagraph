@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react'
-import { mixClassNames } from '../utils/styledClassName'
+import { mixClassNames } from '../utils/mixClassNames'
 
 interface ButtonProps {
     className?: string

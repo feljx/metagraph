@@ -6,7 +6,7 @@ import React, {
     MouseEvent,
     FunctionComponent
 } from 'react'
-import { mixClassNames } from '../utils/styledClassName'
+import { mixClassNames } from '../utils/mixClassNames'
 
 interface ButtonGroupProps {
     className?: string
