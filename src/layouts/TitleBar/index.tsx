@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { Menu } from '../Menu'
 import { WindowButtons } from '../WindowButtons'
 import { Button } from '../../templates/ButtonToggle'
-import { styledClassName } from '../../utils/styledClassName'
+import { mixClassNames } from '../../utils/styledClassName'
 import { StyledProps } from '../../types/StyledProps'
 
 export const TitleBar: FunctionComponent<StyledProps> = ({ className, ...props }) => {
@@ -14,7 +14,7 @@ export const TitleBar: FunctionComponent<StyledProps> = ({ className, ...props }
     ]
 
     return (
-        <div {...props} className={styledClassName(className, classes)}>
+        <div {...props} className={mixClassNames(className, classes)}>
             <Menu className="no-drag ml-0.5" />
             <Title className="select-none">metagraph</Title>
             {/* <WindowButtons className="no-drag">
@@ -34,7 +34,7 @@ export const Title: FunctionComponent<StyledProps> = ({
     const classes = [ 'p-1' ]
 
     return (
-        <div {...props} className={styledClassName(className, classes)}>
+        <div {...props} className={mixClassNames(className, classes)}>
             {children}
         </div>
     )

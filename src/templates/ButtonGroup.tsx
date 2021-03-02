@@ -6,7 +6,7 @@ import React, {
     MouseEvent,
     FunctionComponent
 } from 'react'
-import { styledClassName } from '../utils/styledClassName'
+import { mixClassNames } from '../utils/styledClassName'
 
 interface ButtonGroupProps {
     className?: string
@@ -23,6 +23,7 @@ export const ButtonGroup: FunctionComponent<ButtonGroupProps> = ({
 }) => {
     const numChildren = Children.count(children)
     const [ clicked, setClicked ] = useState(UNCLICKED)
+    
     const clickButton = (ev: MouseEvent) => {
         const num = GET_NUM(ev.target)
         if (!isNaN(num) && num > UNCLICKED) {
@@ -58,7 +59,7 @@ export const ButtonGroup: FunctionComponent<ButtonGroupProps> = ({
     return (
         <div
             {...props}
-            className={styledClassName(className, classes)}
+            className={mixClassNames(className, classes)}
             onClick={clickButton}
             onMouseMove={maybeMoveClick}
         >

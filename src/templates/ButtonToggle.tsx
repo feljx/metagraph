@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react'
-import { styledClassName } from '../utils/styledClassName'
+import { mixClassNames } from '../utils/styledClassName'
 
 interface ButtonProps {
     className?: string
@@ -27,7 +27,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
     return (
         <div
             {...props}
-            className={styledClassName(className, classes)}
+            className={mixClassNames(className, classes)}
             // onClick={toggleClicked}
         >
             {children}
