@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
-import { Button } from '../../templates/ButtonToggle'
-import { ButtonGroup } from '../../templates/ButtonGroup'
-import { StyledProps } from '../../types/StyledProps'
+import { Button } from '../templates/Button'
+import { ButtonGroup } from '../templates/ButtonGroup'
+import { StyledProps } from '../types/StyledProps'
 
 export const Menu: FunctionComponent<StyledProps> = (props) => {
     return (

@@ -23,7 +23,7 @@ export const ButtonGroup: FunctionComponent<ButtonGroupProps> = ({
 }) => {
     const numChildren = Children.count(children)
     const [ clicked, setClicked ] = useState(UNCLICKED)
-    
+
     const clickButton = (ev: MouseEvent) => {
         const num = GET_NUM(ev.target)
         if (!isNaN(num) && num > UNCLICKED) {

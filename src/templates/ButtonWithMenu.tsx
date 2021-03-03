@@ -1,15 +1,18 @@
 import React, { FunctionComponent, useState } from 'react'
 import { mixClassNames } from '../utils/mixClassNames'
+import { ContextMenu } from './ContextMenu'
 
-interface ButtonProps {
+interface ButtonWithMenuProps {
     className?: string
     clicked?: boolean
+    menu: FunctionComponent
 }
 
-export const Button: FunctionComponent<ButtonProps> = ({
+export const ButtonWithMenu: FunctionComponent<ButtonWithMenuProps> = ({
     className,
     children,
     clicked,
+    menu,
     ...props
 }) => {
     const classes = [
@@ -18,12 +21,19 @@ export const Button: FunctionComponent<ButtonProps> = ({
         'leading-none',
         'transition duration-100',
         'cursor-default select-none',
-        clicked ? 'bg-gray' : 'hover:bg-gray-dark  '
+        clicked ? 'bg-gray' : 'hover:bg-gray-dark'
+        // clicked ? ""
+    ]
+    const menuClasses = [
+        'flex flex-col',
+        'bg-green-light',
+        clicked ? 'relative' : 'hidden'
     ]
 
     return (
         <div {...props} className={mixClassNames(className, classes)}>
             {children}
+            <menu className={mixClassNames('', menuClasses)} />
         </div>
     )
 }
