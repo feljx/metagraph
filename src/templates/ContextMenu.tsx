@@ -5,16 +5,23 @@ interface StyledProps {
     className?: string
 }
 
-export const ContextMenu: FunctionComponent<StyledProps> = ({
+interface ContextMenuProps extends StyledProps {
+    menuData: string[]
+}
+
+export const ContextMenu: FunctionComponent<ContextMenuProps> = ({
     children,
     className,
+    menuData,
     ...props
 }) => {
-    const classes = [ '' ]
+    const classes = [ 'flex flex-col', 'rounded-md', 'cursor-default select-none' ]
+
+    const items = menuData.map((label, idx) => <MenuItem key={idx}>{label}</MenuItem>)
 
     return (
         <div {...props} className={mixClassNames(className, classes)}>
-            {children}
+            {items}
         </div>
     )
 }
@@ -24,7 +31,7 @@ export const MenuItem: FunctionComponent<StyledProps> = ({
     className,
     ...props
 }) => {
-    const classes = [ '' ]
+    const classes = [ 'cursor-default select-none' ]
 
     return (
         <div {...props} className={mixClassNames(className, classes)}>

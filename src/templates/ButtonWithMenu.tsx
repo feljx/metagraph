@@ -5,14 +5,14 @@ import { ContextMenu } from './ContextMenu'
 interface ButtonWithMenuProps {
     className?: string
     clicked?: boolean
-    menu: FunctionComponent
+    menuData: string[]
 }
 
 export const ButtonWithMenu: FunctionComponent<ButtonWithMenuProps> = ({
     className,
     children,
     clicked,
-    menu,
+    menuData,
     ...props
 }) => {
     const classes = [
@@ -25,15 +25,15 @@ export const ButtonWithMenu: FunctionComponent<ButtonWithMenuProps> = ({
         // clicked ? ""
     ]
     const menuClasses = [
-        'flex flex-col',
-        'bg-green-light',
-        clicked ? 'relative' : 'hidden'
+        'px-3 -mx-3 my-2',
+        'bg-gray-darker',
+        clicked ? 'absolute' : 'hidden'
     ]
 
     return (
         <div {...props} className={mixClassNames(className, classes)}>
             {children}
-            <menu className={mixClassNames('', menuClasses)} />
+            <ContextMenu menuData={menuData} className={mixClassNames('', menuClasses)} />
         </div>
     )
 }

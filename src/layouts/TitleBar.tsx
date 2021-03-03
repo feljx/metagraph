@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { Menu } from './MainMenu'
+import { MainMenu } from './MainMenu'
 import { WindowButtons } from './WindowButtons'
 import { Button } from '../templates/Button'
 import { mixClassNames } from '../utils/mixClassNames'
@@ -15,7 +15,7 @@ export const TitleBar: FunctionComponent<StyledProps> = ({ className, ...props }
 
     return (
         <div {...props} className={mixClassNames(className, classes)}>
-            <Menu className="no-drag ml-0.5" />
+            <MainMenu className="no-drag ml-0.5" />
             <Title className="select-none">metagraph</Title>
             {/* <WindowButtons className="no-drag">
                 <Button>min</Button>
