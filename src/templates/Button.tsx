@@ -1,18 +1,21 @@
 import React, { FunctionComponent, useState } from 'react'
+import { StyledProps } from '../types/StyledProps'
 import { mixClassNames } from '../utils/mixClassNames'
-import { ContextMenu } from './ContextMenu'
+import { DropdownItemProps, DropdownMenu } from './Menu'
 
 const commonButtonStyles = [
     'py-2 px-4 -mx-1',
     'rounded-md',
     'leading-none',
     'transition duration-100',
-    'cursor-default select-none',
+    'cursor-default select-none'
 ]
 const backgroundStyle = 'bg-gray'
 const hoverBackgroundStyle = 'hover:bg-gray-dark'
 
-
+//
+// Button
+//
 
 interface ButtonProps {
     className?: string
@@ -28,7 +31,6 @@ export const Button: FunctionComponent<ButtonProps> = ({
     const classes = [
         ...commonButtonStyles,
         clicked ? backgroundStyle : hoverBackgroundStyle
-
     ]
 
     return (
@@ -38,19 +40,20 @@ export const Button: FunctionComponent<ButtonProps> = ({
     )
 }
 
+//
+// Button with menu
+//
 
-
-interface ButtonWithMenuProps {
-    className?: string
+interface ButtonWithMenuProps extends StyledProps {
     clicked?: boolean
-    menuData: string[]
+    itemProps: DropdownItemProps[]
 }
 
 export const ButtonWithMenu: FunctionComponent<ButtonWithMenuProps> = ({
     className,
     children,
     clicked,
-    menuData,
+    itemProps,
     ...props
 }) => {
     const classes = [
@@ -66,7 +69,10 @@ export const ButtonWithMenu: FunctionComponent<ButtonWithMenuProps> = ({
     return (
         <div {...props} className={mixClassNames(className, classes)}>
             {children}
-            <ContextMenu menuData={menuData} className={mixClassNames('', menuClasses)} />
+            <DropdownMenu
+                itemProps={itemProps}
+                className={mixClassNames('', menuClasses)}
+            />
         </div>
     )
 }

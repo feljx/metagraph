@@ -1,48 +1,61 @@
 import React, { FunctionComponent } from 'react'
 import { Button } from '../templates/Button'
-import { ButtonGroup } from '../templates/ButtonGroup'
+import { ButtonMenu, DropdownItemProps } from '../templates/Menu'
 import { ButtonWithMenu } from '../templates/Button'
 import { StyledProps } from '../types/StyledProps'
 import { mixClassNames } from '../utils/mixClassNames'
+import { app } from 'electron'
 
-
-export const MainMenu: FunctionComponent<StyledProps> = (props) => {
-    const buttons = Object.entries(menuButtonData).map(([ key, value ], idx) => {
-        const hasMenuData = value.length > 0
+export const MainMenu = (props: StyledProps) => {
+    const buttons = Object.entries(
+        menuButtonData
+    ).map(([ buttonLabel, itemProps ], idx) => {
+        const hasMenuData = itemProps.length > 0
         return hasMenuData ? (
-            <ButtonWithMenu menuData={value} key={idx}>
-                {key}
+            <ButtonWithMenu itemProps={itemProps} key={idx}>
+                {buttonLabel}
             </ButtonWithMenu>
         ) : (
-            <Button key={idx}>{key}</Button>
+            <Button key={idx}>{buttonLabel}</Button>
         )
     })
 
-    const classes = ["flex flex-row"]
+    const classes = [ 'flex flex-row' ]
 
     return (
-        <ButtonGroup {...props} className={mixClassNames(props.className, classes)}>
+        <ButtonMenu {...props} className={mixClassNames(props.className, classes)}>
             {buttons}
-        </ButtonGroup>
+        </ButtonMenu>
     )
 }
 
 interface MenuButtonData {
-    [k: string]: string[]
+    [k: string]: DropdownItemProps[]
 }
+
 const menuButtonData: MenuButtonData = {
     File: [
-        'New Project',
-        'New Window',
-        'Open Project',
-        'Open Recent',
-        'Save',
-        'Save As...',
-        'Exit'
+        { children: 'New Project' },
+        { children: 'New Window' },
+        { children: 'Open Project' },
+        { children: 'Open Recent' },
+        { children: 'Save' },
+        { children: 'Save As...' },
+        { children: 'Exit', onClick: () => app.quit() }
     ],
-    Edit: [ 'Undo', 'Redo', 'Cut', 'Copy', 'Paste' ],
-    Selection: [ 'Copy Styles', 'View Source' ],
-    View: [ 'Zoom In', 'Zoom Out' ],
+    Edit: [
+        { children: 'Undo' },
+        { children: 'Redo' },
+        { children: 'Cut' },
+        { children: 'Copy' },
+        { children: 'Paste' }
+    ],
+    Selection: [ { children: 'Copy Styles' }, { children: 'View Source' } ],
+    View: [ { children: 'Zoom In' }, { children: 'Zoom Out' } ],
     Settings: [],
-    Help: [ 'Quick Start', 'Reference', 'About' ]
+    Help: [
+        { children: 'Quick Start' },
+        { children: 'Reference' },
+        { children: 'About' }
+    ]
 }
