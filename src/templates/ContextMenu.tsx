@@ -15,7 +15,7 @@ export const ContextMenu: FunctionComponent<ContextMenuProps> = ({
     menuData,
     ...props
 }) => {
-    const classes = [ 'flex flex-col', 'rounded-md', 'cursor-default select-none' ]
+    const classes = [ 'flex flex-col', 'rounded-lg', 'cursor-default select-none' ]
 
     const items = menuData.map((label, idx) => <MenuItem key={idx}>{label}</MenuItem>)
 
@@ -31,7 +31,7 @@ export const MenuItem: FunctionComponent<StyledProps> = ({
     className,
     ...props
 }) => {
-    const classes = [ 'cursor-default select-none' ]
+    const classes = [ 'py-1.5 pl-4 pr-16 -mx-4', 'cursor-default select-none' ]
 
     return (
         <div {...props} className={mixClassNames(className, classes)}>

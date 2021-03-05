@@ -8,7 +8,7 @@ import { StyledProps } from '../types/StyledProps'
 export const TitleBar: FunctionComponent<StyledProps> = ({ className, ...props }) => {
     const classes = [
         'drag',
-        'bg-gray-darker',
+        'bg-gray-darkest',
         'flex justify-between',
         'text-stone-light'
     ]

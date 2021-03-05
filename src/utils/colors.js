@@ -36,10 +36,10 @@ const colors = (() => ({
         lightest: '#868da2',
         lighter: '#6e758c',
         light: '#586079',
-        DEFAULT: '#4c5367',
-        dark: '#36384a',
-        darker: '#2b2b36',
-        darkest: '#242433'
+        DEFAULT: '#36384a',
+        dark: '#242433',
+        darker: '#1b1b26',
+        darkest: '#11111a'
     },
     stone: {
         light: '#eef3f6',

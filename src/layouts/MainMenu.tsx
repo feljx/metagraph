@@ -1,8 +1,10 @@
 import React, { FunctionComponent } from 'react'
 import { Button } from '../templates/Button'
 import { ButtonGroup } from '../templates/ButtonGroup'
-import { ButtonWithMenu } from '../templates/ButtonWithMenu'
+import { ButtonWithMenu } from '../templates/Button'
 import { StyledProps } from '../types/StyledProps'
+import { mixClassNames } from '../utils/mixClassNames'
+
 
 export const MainMenu: FunctionComponent<StyledProps> = (props) => {
     const buttons = Object.entries(menuButtonData).map(([ key, value ], idx) => {
@@ -15,8 +17,11 @@ export const MainMenu: FunctionComponent<StyledProps> = (props) => {
             <Button key={idx}>{key}</Button>
         )
     })
+
+    const classes = ["flex flex-row"]
+
     return (
-        <ButtonGroup {...props} className="flex flex-row">
+        <ButtonGroup {...props} className={mixClassNames(props.className, classes)}>
             {buttons}
         </ButtonGroup>
     )
