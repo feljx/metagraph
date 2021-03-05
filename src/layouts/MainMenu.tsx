@@ -5,7 +5,6 @@ import { ButtonWithMenu } from '../templates/Button'
 import { StyledProps } from '../types/StyledProps'
 import { mixClassNames } from '../utils/mixClassNames'
 
-
 export const MainMenu: FunctionComponent<StyledProps> = (props) => {
     const buttons = Object.entries(menuButtonData).map(([ key, value ], idx) => {
         const hasMenuData = value.length > 0
@@ -18,7 +17,7 @@ export const MainMenu: FunctionComponent<StyledProps> = (props) => {
         )
     })
 
-    const classes = ["flex flex-row"]
+    const classes = [ 'flex flex-row' ]
 
     return (
         <ButtonGroup {...props} className={mixClassNames(props.className, classes)}>
