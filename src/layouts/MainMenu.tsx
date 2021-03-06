@@ -4,8 +4,6 @@ import { ButtonMenu, DropdownItemProps } from '../templates/Menu'
 import { ButtonWithMenu } from '../templates/Button'
 import { StyledProps } from '../types/StyledProps'
 import { mixClassNames } from '../utils/mixClassNames'
-import { app } from 'electron'
-import { sendMessage } from '../utils/ipc_renderer'
 import { ApplicationMessages } from '../types/ipc'
 
 export const MainMenu = (props: StyledProps) => {
@@ -31,7 +29,17 @@ export const MainMenu = (props: StyledProps) => {
     )
 }
 
-const quitApplication = sendMessage(ApplicationMessages.Quit)
+declare global {
+    interface Window {
+        sendMessage: Function
+    }
+}
+
+const quitApplication = () => {
+    console.log('QUIT !')
+    const fn = window.sendMessage(ApplicationMessages.Quit)
+    console.log(fn)
+}
 
 interface MenuButtonData {
     [k: string]: DropdownItemProps[]
@@ -45,7 +53,7 @@ const menuButtonData: MenuButtonData = {
         { children: 'Open Recent' },
         { children: 'Save' },
         { children: 'Save As...' },
-        { children: 'Exit' }
+        { children: 'Exit', onClick: quitApplication }
     ],
     Edit: [
         { children: 'Undo' },

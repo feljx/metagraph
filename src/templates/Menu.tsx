@@ -9,7 +9,7 @@ import { mixClassNames } from '../utils/mixClassNames'
 const UNCLICKED = ''
 const GET_NUM = (eventTarget: EventTarget) => {
     const num = (eventTarget as HTMLElement).getAttribute('num')
-    if (num.includes('button')) {
+    if (num && num.includes('button')) {
         return num
     }
 }

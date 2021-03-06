@@ -1,5 +1,8 @@
+import { resolve } from 'path'
 import { Model } from '../abstract/Model'
-import { BrowserWindowConstructorOptions } from 'electron'
+import { app, BrowserWindowConstructorOptions } from 'electron'
+
+const pathPreload = [ app.getAppPath(), 'src', 'utils', 'ipc_preload.js' ].join('/')
 
 export class ApplicationModel extends Model {
     public windowOptions: BrowserWindowConstructorOptions = {
@@ -7,7 +10,8 @@ export class ApplicationModel extends Model {
         height: 800,
         frame: false,
         webPreferences: {
-            contextIsolation: true
+            contextIsolation: false,
+            preload: pathPreload
         }
     }
 }
