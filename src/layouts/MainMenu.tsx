@@ -5,6 +5,8 @@ import { ButtonWithMenu } from '../templates/Button'
 import { StyledProps } from '../types/StyledProps'
 import { mixClassNames } from '../utils/mixClassNames'
 import { app } from 'electron'
+import { sendMessage } from '../utils/ipc_renderer'
+import { ApplicationMessages } from '../types/ipc'
 
 export const MainMenu = (props: StyledProps) => {
     const buttons = Object.entries(
@@ -29,6 +31,8 @@ export const MainMenu = (props: StyledProps) => {
     )
 }
 
+const quitApplication = sendMessage(ApplicationMessages.Quit)
+
 interface MenuButtonData {
     [k: string]: DropdownItemProps[]
 }
@@ -41,7 +45,7 @@ const menuButtonData: MenuButtonData = {
         { children: 'Open Recent' },
         { children: 'Save' },
         { children: 'Save As...' },
-        { children: 'Exit', onClick: () => app.quit() }
+        { children: 'Exit' }
     ],
     Edit: [
         { children: 'Undo' },
