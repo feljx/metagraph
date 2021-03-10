@@ -10,7 +10,7 @@ export class ApplicationModel extends Model {
         height: 800,
         frame: false,
         webPreferences: {
-            contextIsolation: false,
+            contextIsolation: true,
             preload: pathPreload
         }
     }

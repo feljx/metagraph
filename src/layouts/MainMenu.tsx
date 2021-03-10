@@ -36,10 +36,16 @@ declare global {
 }
 
 const quitApplication = () => {
-    console.log('QUIT !')
-    const fn = window.sendMessage(ApplicationMessages.Quit)
-    console.log(fn)
+    window.api.send('toMain', ApplicationMessages.Quit)
 }
+
+// kraftwerk
+// the cure
+// daft punk
+// tim dup
+// lil skies
+// george brassens
+// beatles
 
 interface MenuButtonData {
     [k: string]: DropdownItemProps[]

@@ -1,6 +1,7 @@
-import { app, BrowserWindow, screen } from 'electron'
+import { app, BrowserWindow, ipcMain, screen } from 'electron'
 import { ApplicationModel } from './model'
 import { Controller } from '../abstract/Controller'
+import { ApplicationMessages } from '../types/ipc'
 declare const MAIN_WINDOW_WEBPACK_ENTRY: any
 
 export class ApplicationController extends Controller {
@@ -22,6 +23,18 @@ export class ApplicationController extends Controller {
             if (BrowserWindow.getAllWindows().length === 0) {
                 this.instantiateWindow()
             }
+        })
+        // IPC message reception
+        ipcMain.on('toMain', (event, message: string) => {
+            switch (message) {
+                case ApplicationMessages.Quit:
+                    app.quit()
+                    break
+                default:
+                    break
+            }
+            // Send result back to renderer process
+            // this.windows[0].webContents.send('fromMain', response)
         })
     }
 

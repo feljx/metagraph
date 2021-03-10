@@ -1,10 +1,20 @@
-const { ipcRenderer } = require('electron')
+const { contextBridge, ipcRenderer } = require('electron')
 
-// const sendMessage = (msg: string) => () => ipcRenderer.send(, msg)
-const sendMessage = (msg) => () => ipcRenderer.send('async-message', msg)
-
-window.sendMessage = sendMessage
-
-window.foo = 'babaloo'
-
-console.log('PRELOAD', window.sendMessage)
+// Expose protected methods that allow the renderer process to use
+// the ipcRenderer without exposing the entire object
+contextBridge.exposeInMainWorld('api', {
+    send: (channel, data) => {
+        // whitelist channels
+        let validChannels = [ 'toMain' ]
+        if (validChannels.includes(channel)) {
+            ipcRenderer.send(channel, data)
+        }
+    },
+    receive: (channel, func) => {
+        let validChannels = [ 'fromMain' ]
+        if (validChannels.includes(channel)) {
+            // Deliberately strip event as it includes `sender`
+            ipcRenderer.on(channel, (event, ...args) => func(...args))
+        }
+    }
+})
