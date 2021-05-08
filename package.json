@@ -54,6 +54,7 @@
                 {
                   "html": "./src/assets/index.html",
                   "js": "./src/Window/main.ts",
+                  "preload": "",
                   "name": "main_window"
                 }
               ]
