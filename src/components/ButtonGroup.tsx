@@ -65,19 +65,19 @@ export const ButtonGroup: FunctionComponent<ButtonGroup_Props> = ({
     ...props
 }) => {
     const numChildren = Children.count(children)
-    const [ clicked, setClicked ] = useState(UNCLICKED)
+    const [ isClicked, setIsClicked ] = useState(UNCLICKED)
 
     const clickButton = (ev: MouseEvent) => {
         const num = GET_NUM(ev.target)
         if (!isNaN(num) && num > UNCLICKED) {
-            setClicked(num === clicked ? UNCLICKED : num)
+            setIsClicked(num === isClicked ? UNCLICKED : num)
         }
     }
     const maybeMoveClick = (ev: MouseEvent) => {
-        if (clicked !== UNCLICKED) {
+        if (isClicked !== UNCLICKED) {
             const num = GET_NUM(ev.target)
             if (num < numChildren && num > UNCLICKED) {
-                setClicked(num)
+                setIsClicked(num)
             }
             else {
                 ev.stopPropagation()
@@ -92,7 +92,7 @@ export const ButtonGroup: FunctionComponent<ButtonGroup_Props> = ({
 
     const toButton = (child: ReactNode, i: number) => {
         return isValidElement(child) ? (
-            <child.type {...child.props} clicked={i === clicked} num={i} key={i} />
+            <child.type {...child.props} clicked={i === isClicked} num={i} key={i} />
         ) : (
             child
         )

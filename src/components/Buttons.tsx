@@ -37,6 +37,10 @@ interface Button_Props {
 const Button: FunctionComponent<Button_Props> = (props) => {
     // Return styled component
     const button_classes = style(button_styles, conditional_button_styles, props)
+    console.log('NORMAL BUTTON PROPS', props)
+
+    console.log(button_classes)
+
     return (
         <div {...props} className={button_classes}>
             {props.children}
@@ -56,14 +60,15 @@ interface ButtonWithMenu_Props {
 
 // React component
 const ButtonWithMenu: FunctionComponent<ButtonWithMenu_Props> = ({
-    className,
+    // className,
     children,
-    isClicked,
+    // isClicked,
     menuData,
     ...props
 }) => {
     // Return styled component
     const button_classes = style(button_styles, conditional_button_styles, props)
+
     const menu_classes = style(menu_styles, conditional_menu_styles, props)
     return (
         <div {...props} className={button_classes}>
