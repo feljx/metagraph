@@ -31,7 +31,7 @@ export const MenuItem: FunctionComponent<StyledProps> = ({
     className,
     ...props
 }) => {
-    const classes = [ 'py-1.5 pl-4 pr-16 -mx-4', 'cursor-default select-none' ]
+    const classes = [ 'py-2 pl-4 pr-16 -mx-4', 'cursor-default select-none' ]
 
     return (
         <div {...props} className={mixClassNames(className, classes)}>

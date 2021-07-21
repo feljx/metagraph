@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
-import { Button } from '../components/Buttons'
-import { ButtonGroup } from '../components/ButtonGroup'
-import { ButtonWithMenu } from '../components/Buttons'
+import { Button } from '../templates/Button'
+import { ButtonGroup } from '../templates/ButtonGroup'
+import { ButtonWithMenu } from '../templates/Button'
 import { StyledProps } from '../types/StyledProps'
 import { mixClassNames } from '../utils/mixClassNames'
 

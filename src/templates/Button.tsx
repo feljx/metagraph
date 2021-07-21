@@ -7,12 +7,10 @@ const commonButtonStyles = [
     'rounded-md',
     'leading-none',
     'transition duration-100',
-    'cursor-default select-none',
+    'cursor-default select-none'
 ]
 const backgroundStyle = 'bg-gray'
 const hoverBackgroundStyle = 'hover:bg-gray-dark'
-
-
 
 interface ButtonProps {
     className?: string
@@ -28,7 +26,6 @@ export const Button: FunctionComponent<ButtonProps> = ({
     const classes = [
         ...commonButtonStyles,
         clicked ? backgroundStyle : hoverBackgroundStyle
-
     ]
 
     return (
@@ -37,8 +34,6 @@ export const Button: FunctionComponent<ButtonProps> = ({
         </div>
     )
 }
-
-
 
 interface ButtonWithMenuProps {
     className?: string

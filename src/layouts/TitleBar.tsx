@@ -17,11 +17,11 @@ export const TitleBar: FunctionComponent<StyledProps> = ({ className, ...props }
         <div {...props} className={mixClassNames(className, classes)}>
             <MainMenu className="no-drag ml-0.5" />
             <Title className="select-none">metagraph</Title>
-            {/* <WindowButtons className="no-drag">
+            <WindowButtons className="no-drag">
                 <Button>min</Button>
                 <Button>max</Button>
                 <Button>X</Button>
-            </WindowButtons> */}
+            </WindowButtons>
         </div>
     )
 }
